@@ -9,20 +9,48 @@
 <body>
   <div class="head">
     <div class="container">
+
+
+      <!-- navigation area -->
       <div class="navigation">
         <div class="name">todo</div>
         <img class="mode" id="light-mode" src="./images/icon-moon.svg" alt="">
       </div>
+
+      <!-- to-do area -->
       <div class="to-do">
-        <div class="add-to-do">
-          
+
+        <!-- adding a to-do -->
+        <div class="add-to-do to-do-box">
+          <div class="circle"></div>
+          <input type="text" name="" id="to-do-input" placeholder="Create a new todo..." >
         </div>
-        <div class="to-dos"></div>
+
+
+
+        <!-- to-dos that are added to the node -->
+        <div class="to-dos">
+          <!-- Javascript insertion -->
+        </div>
+
+
+        <!-- Clearing and filtering lists -->
+        <div class="clear-filter">
+          <p><span id="to-do-remain">5</span> items left</p>
+          <div class="to-do-filter to-do-box">
+            <p id="all" class="active">All</p>
+            <p id="active">Active</p>
+            <p id="completed">Completed</p>
+          </div>
+          <p id="to-do-clear">Clear Completed</p>
+        </div>
       </div>
     </div>
   </div>
-  <div class="body">
 
+  <!-- Drag and drop to reorder list -->
+  <div class="dragdrop">
+    <p id="dragdrop">Drag and drop to reorder list</p>
   </div>
   <script src="./script.js"></script>
 </body>
