@@ -32,7 +32,9 @@ body{
 
 /* navigation area */
 .head{
-    height: 200px;
+    aspect-ratio: 375/200;
+    width: 100%;
+    max-height: 250px;
     background-image: url(./images/bg-mobile-light.jpg);
     background-size: cover;
     position: relative;
@@ -171,4 +173,40 @@ body{
     font-weight: bold;
     color: var(--dark-gray-blue);
     cursor: pointer;
+}
+
+
+/* responsiveness */
+@media screen and (min-width: 1000px) {
+    .head{
+        background-image: url(./images/bg-desktop-light.jpg);
+    }
+    .container{
+        position: absolute;
+        width: 40%;
+        left: calc((100% - 40%) / 2);
+        top: 40px;
+    }
+    .to-do{
+        margin-top: 40px;
+    }
+
+    /* clear filter responsiveness */
+    .clear-filter{
+        grid-template-columns: 30% 40% 30%;
+    }
+    .clear-filter > p:first-child{
+        border-radius: 0px 0px 0px 7px;
+        grid-row: 1/2;
+    }
+    #to-do-clear{
+        order: 3;
+        grid-column: 3/4;
+    }
+    .to-do-filter{
+        margin-top: 0px;
+        order: 2;
+        grid-column: 2/3;
+        border-radius: 0px 0px 0px 0px;
+    }
 }
