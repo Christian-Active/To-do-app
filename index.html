@@ -6,24 +6,24 @@
   <link rel="stylesheet" href="./style.css">
   <title>To-Do-App</title>
 </head>
-<body>
+<body id="body">
   <div class="head">
     <div class="container">
 
 
       <!-- navigation area -->
       <div class="navigation">
-        <div class="name">todo</div>
-        <img class="mode" id="light-mode" src="./images/icon-moon.svg" alt="">
+        <div id = "name" class="name">todo</div>
+        <img class="mode" id="0" src="./images/icon-moon.svg" alt="">
       </div>
 
       <!-- to-do area -->
       <div class="to-do">
 
         <!-- adding a to-do -->
-        <div class="add-to-do to-do-box">
+        <div class="add-to-do to-do-box to-do-cont">
           <div class="circle"></div>
-          <input type="text" name="" id="to-do-input" placeholder="Create a new todo..." >
+          <input type="text" name="" class="to-do-input" placeholder="Create a new todo..." >
         </div>
 
 
@@ -31,18 +31,42 @@
         <!-- to-dos that are added to the node -->
         <div class="to-dos">
           <!-- Javascript insertion -->
+          <div class="add-to-do to-do-box to-do-cont">
+            <div class="circle"></div>
+            <input type="text" name="" class="to-do-input" placeholder="Create a new todo..." >
+          </div>
+          <div class="add-to-do to-do-box to-do-cont">
+            <div class="circle"></div>
+            <input type="text" name="" class="to-do-input" placeholder="Create a new todo..." >
+          </div>
+          <div class="add-to-do to-do-box to-do-cont">
+            <div class="circle"></div>
+            <input type="text" name="" class="to-do-input" placeholder="Create a new todo..." >
+          </div>
+          <div class="add-to-do to-do-box to-do-cont">
+            <div class="circle"></div>
+            <input type="text" name="" class="to-do-input" placeholder="Create a new todo..." >
+          </div>
+          <div class="add-to-do to-do-box to-do-cont">
+            <div class="circle"></div>
+            <input type="text" name="" class="to-do-input" placeholder="Create a new todo..." >
+          </div>
+          <div class="add-to-do to-do-box to-do-cont">
+            <div class="circle"></div>
+            <input type="text" name="" class="to-do-input" placeholder="Create a new todo..." >
+          </div>
         </div>
 
 
         <!-- Clearing and filtering lists -->
         <div class="clear-filter">
-          <p><span id="to-do-remain">5</span> items left</p>
-          <div class="to-do-filter to-do-box">
+          <p class="to-do-cont"><span id="to-do-remain">5</span> items left</p>
+          <div class="to-do-filter to-do-box to-do-cont">
             <p id="all" class="active">All</p>
             <p id="active">Active</p>
             <p id="completed">Completed</p>
           </div>
-          <p id="to-do-clear">Clear Completed</p>
+          <p class="to-do-cont" id="to-do-clear">Clear Completed</p>
         </div>
       </div>
     </div>
