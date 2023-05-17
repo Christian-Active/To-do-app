@@ -63,6 +63,8 @@ body{
     width: 20;
     padding-bottom: 5px;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 /* Adding a to-do */
@@ -125,6 +127,8 @@ body{
 }
 .clear-filter p{
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 .clear-filter > p:first-child{
     border-radius: 0px 0px 0px 7px;
@@ -135,6 +139,9 @@ body{
     justify-content: flex-end;
     border-radius: 0px 0px 7px 0px;
     cursor: pointer;
+}
+#to-do-clear:hover{
+    color: var(--very-dark-gray-blue);
 }
 .to-do-filter{
     order: 3;
@@ -176,7 +183,11 @@ body{
     color: var(--dark-gray-blue);
     cursor: pointer;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
+
+
 
 /* responsiveness */
 @media screen and (min-width: 720px) {
@@ -185,7 +196,7 @@ body{
         height: 230px;
     }
     .container{
-        width: 60%;
+        width: 50%;
     }
     .to-do{
         margin-top: 40px;
@@ -213,6 +224,6 @@ body{
 
 @media screen and (min-width: 1000px) {
     .container{
-        width: 50%;
+        width: 40%;
     }
 }
