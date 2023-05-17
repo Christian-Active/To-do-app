@@ -10,7 +10,7 @@ let toDoText = document.querySelectorAll(".to-do-input")
 
 // handle theme changes
 function setMode(mode, id, width){
-    if(width < 1000)
+    if(width < 720)
     {
         head.style.backgroundImage = mode[id].bgMobile
     }else{
