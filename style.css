@@ -78,13 +78,19 @@ body{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .to-do-box .circle{
-    width: 22px;
-    height: 20px;
+    width: 23px;
+    height: 23px;
     border-radius: 50%;
     border: 1px solid var(--light-gray-blue);
     cursor: pointer;
+}
+.to-do-box .circle img{
+    width: 15;
+    margin: 5;
+    border-radius: 50%;
 }
 .to-do-input{
     border: none;
@@ -95,6 +101,20 @@ body{
     background-color: transparent;
     color: var(--very-dark-gray-blue);
 }
+.to-do-text{
+    margin-left: 10px;
+    font-size: 13;
+    width: 100%;
+    color: var(--very-dark-gray-blue);
+    user-select: none;
+}
+.delete{
+    width: 12;
+    height: 12;
+    cursor: pointer;
+    margin-left: 10;
+}
+
 
 /* To Do List */
 .to-dos{
@@ -109,11 +129,14 @@ body{
 .to-dos .to-do-box:first-child{
     border-radius: 7px 7px 0px 0px;
 }
+.to-do-circle{
+    border: none;
+}
 
 
 /* Clearing and Filtering a part of the list */
 .clear-filter{
-    display: grid;
+    display: none;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
 }
