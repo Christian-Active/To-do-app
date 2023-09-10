@@ -14,29 +14,28 @@
       <div class="navigation">
         <div id = "name" class="name">todo</div>
         <img class="mode" id="0" src="./images/icon-moon.svg" alt="">
-
       </div>
 
       <!-- to-do area -->
       <div class="to-do">
 
-        <!-- adding a to-do -->
-        <div class="add-to-do to-do-box to-do-cont">
-          <div class="circle"></div>
-          <input type="text" id="to-do-input" class="to-do-input" placeholder="Create a new todo..." >
-        </div>
+        <!-- Form area -->
+        <form>
+          <!-- adding a to-do -->
+          <div class="add-to-do to-do-box to-do-cont">
+            <div class="circle"></div>
+            <input type="text" id="toDoInput" class="to-do-input" placeholder="Create a new todo..." >
+          </div>
 
-
-
-        <!-- to-dos that are added to the node -->
-        <div class="to-dos">
-          <!-- Javascript insertion -->
-        </div>
-
+          <!-- to-dos that are added to the node -->
+          <ul class="to-dos">
+            <!-- Javascript insertion -->
+          </ul>
+        </form>
 
         <!-- Clearing and filtering lists -->
         <div class="clear-filter">
-          <p class="to-do-cont"><span id="to-do-remain">5</span> items left</p>
+          <p class="to-do-cont"><span id="to-do-remain"></span> items left</p>
           <div class="to-do-filter to-do-box to-do-cont">
             <p id="all" class="active">All</p>
             <p id="active">Active</p>
