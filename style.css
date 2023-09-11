@@ -86,6 +86,7 @@ body{
     border-radius: 50%;
     border: 1px solid var(--light-gray-blue);
     cursor: pointer;
+    outline: none;
 }
 .to-do-box .to-do-circle{
     width: 24px;
@@ -95,6 +96,7 @@ body{
     width: 15;
     margin: 5.5 5;
     user-select: none;
+    outline: none;
 }
 .to-do-input{
     border: none;
@@ -132,12 +134,6 @@ body{
 .to-dos .to-do-box:first-child{
     border-radius: 7px 7px 0px 0px;
 }
-.to-dos .to-do-box:last-child{
-    border-radius: 0 0 7px 7px;
-}
-.to-dos .to-do-box:only-child{
-    border-radius: 7px;
-}
 .to-do-checked .to-do-circle{
     background: linear-gradient(to bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
     border: none;
@@ -148,6 +144,15 @@ body{
 .to-do-checked .to-do-text{
     text-decoration: line-through;
     color: hsl(233, 11%, 84%);
+}
+#emptyTodo{
+    border-radius: 7px 7px 0px 0px;
+    justify-content: center;
+    color: var(--very-dark-gray-blue);
+    user-select: none;
+}
+.to-do-filtered{
+    display: none !important;
 }
 
 
