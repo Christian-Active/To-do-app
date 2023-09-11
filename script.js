@@ -15,7 +15,7 @@ let mode = [
         body: "hsl(235, 21%, 11%)",
         toDoContainer: "hsl(235, 24%, 19%)",
         border: "hsl(237, 14%, 26%)",
-        toDoText: "hsl(234, 39%, 85%",
+        toDoText: "hsl(234, 39%, 85%)",
     },
     {
         bgMobile: "url(./images/bg-mobile-light.jpg)",

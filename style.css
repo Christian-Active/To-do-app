@@ -49,6 +49,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    user-select: none;
 }
 .name{
     text-transform: uppercase;
@@ -143,7 +144,7 @@ body{
 }
 .to-do-checked .to-do-text{
     text-decoration: line-through;
-    color: hsl(233, 11%, 84%);
+    color: var(--dark-gray-blue);
 }
 #emptyTodo{
     border-radius: 7px 7px 0px 0px;
