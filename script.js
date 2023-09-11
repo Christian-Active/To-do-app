@@ -4,7 +4,7 @@ let body = document.getElementById("body");
 let head = document.querySelector(".head");
 let fullTodo = document.querySelector(".to-do")
 let currentTheme = "white";
-let width = window.innerWidth
+let width = window.innerWidth;
 
 
 // Data array for modes
