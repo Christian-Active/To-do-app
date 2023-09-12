@@ -96,7 +96,7 @@ let clearAllTodos = document.querySelector("#to-do-clear");
 
 // Template to create a new todo
 let createTemplate = (todo) => {
-    let html = `<li class="add-to-do to-do-box to-do-cont">
+    let html = `<li class=" item add-to-do to-do-box to-do-cont" draggable="true">
         <div class = "circle to-do-circle"><img src="./images/icon-check.svg"></div>
         <p class="to-do-text">${todo}</p>
         <img class = "delete" src="./images/icon-cross.svg">
@@ -215,3 +215,28 @@ filter.addEventListener("click", e => {
     removeNoTodo()
     todoCount(e.target.id);
 })
+
+// Drag and dropping
+toDos.addEventListener("dragstart", e => {
+    if (e.target.classList.contains("item")){
+        setTimeout(() => e.target.classList.add("dragging"), 0);
+    }
+})
+toDos.addEventListener("dragend", e => {
+    if (e.target.classList.contains("item")){
+        e.target.classList.remove("dragging");
+    }
+})
+
+let initSortableList = e => {
+    e.preventDefault();
+    let draggingItem = document.querySelector(".dragging")
+    const siblings = Array.from(document.querySelectorAll(".item:not(.dragging)"));
+    let nextSibling = siblings.find(sibling => {
+        return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2
+    })
+    toDos.insertBefore(draggingItem, nextSibling)
+}
+
+toDos.addEventListener("dragover", initSortableList)
+toDos.addEventListener("dragenter", e => e.preventDefault())

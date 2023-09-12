@@ -39,10 +39,10 @@ body{
     background-repeat: no-repeat;
 }
 .container{
+    padding-top: 50px;
     width: 90%;
     margin: 0 auto;
     position: relative;
-    top: 50;
 }
 .navigation{
     margin: 0px 5px 0px 5px;
@@ -156,7 +156,6 @@ body{
     display: none !important;
 }
 
-
 /* Clearing and Filtering a part of the list */
 .clear-filter{
     display: none;
@@ -232,7 +231,12 @@ body{
     -webkit-tap-highlight-color: transparent;
     outline: none;
 }
-
+.dragging{
+    transform: perspective(100px) translateZ(1px);
+}
+.item.dragging :where(.circle, p, img){
+    opacity: 0;
+}
 
 
 /* responsiveness */
