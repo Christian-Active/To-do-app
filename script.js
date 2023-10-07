@@ -102,6 +102,15 @@ let createTemplate = (todo) => {
         <img class = "delete" src="./images/icon-cross.svg">
     </li>`
     toDos.innerHTML += html;
+    toDos.querySelectorAll("li").forEach(todo => {
+        todo.addEventListener("dragstart", handleDragStart, false)
+    })
+    toDos.querySelectorAll("li").forEach(todo => {
+        todo.addEventListener("dragover", handleDragOver, false)
+    })
+    toDos.querySelectorAll("li").forEach(todo => {
+        todo.addEventListener("drop", handleDrop, false)
+    })
 }
 
 // Template to show empty filtered todo
@@ -150,6 +159,7 @@ form.addEventListener("submit", e => {
     clearFilter.style.display = "grid";
     todoCount();
 })
+form.toDoInput.addEventListener("drop", e => e.preventDefault());
 
 // delete a todo
 toDos.addEventListener("click", e => {
@@ -184,59 +194,33 @@ clearAllTodos.addEventListener("click", () => {
 // Filtering Todos
 
 // function that filters todo
-let filterTodo = (id) => {
-    if (id == "active"){
-        Array.from(toDos.children)
-            .filter((todo) => todo.classList.contains("to-do-checked"))
-            .forEach(todo => todo.classList.add("to-do-filtered"))
-        Array.from(toDos.children)
-            .filter((todo) => !todo.classList.contains("to-do-checked"))
-            .forEach(todo => todo.classList.remove("to-do-filtered"))
-    }
-    if (id == "completed"){
-        Array.from(toDos.children)
-            .filter((todo) => !todo.classList.contains("to-do-checked"))
-            .forEach(todo => todo.classList.add("to-do-filtered"))
-         Array.from(toDos.children)
-            .filter((todo) => todo.classList.contains("to-do-checked"))
-            .forEach(todo => todo.classList.remove("to-do-filtered"))
-    }
-    if (id == "all"){
-        Array.from(toDos.children)
-            .filter((todo) => todo.classList.contains("add-to-do"))
-            .forEach(todo => todo.classList.remove("to-do-filtered"))
-    }
+let draggedElement = null;
+
+function handleDragStart(e){
+    console.log("Something was dragged")
+    e.dataTransfer.effectAllowed = "move"
+    e.dataTransfer.setData("text/plain", e.target.innerHTML)
+    draggedItem = e.target;
+    e.target.style.opacity = ".5"
 }
 
-// Event listener to filter todo
-let filter = document.querySelector(".to-do-filter");
-filter.addEventListener("click", e => {
-    filterTodo(e.target.id);
-    removeNoTodo()
-    todoCount(e.target.id);
-})
-
-// Drag and dropping
-toDos.addEventListener("dragstart", e => {
-    if (e.target.classList.contains("item")){
-        setTimeout(() => e.target.classList.add("dragging"), 0);
-    }
-})
-toDos.addEventListener("dragend", e => {
-    if (e.target.classList.contains("item")){
-        e.target.classList.remove("dragging");
-    }
-})
-
-let initSortableList = e => {
+function handleDragOver(e){
     e.preventDefault();
-    let draggingItem = document.querySelector(".dragging")
-    const siblings = Array.from(document.querySelectorAll(".item:not(.dragging)"));
-    let nextSibling = siblings.find(sibling => {
-        return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2
-    })
-    toDos.insertBefore(draggingItem, nextSibling)
+    return false;
 }
 
-toDos.addEventListener("dragover", initSortableList)
-toDos.addEventListener("dragenter", e => e.preventDefault())
+function handleDrop(e){
+    e.stopPropagation();
+    if(draggedItem !== this){
+        const tasks = Array.from(toDos.querySelectorAll("li"))
+        const fromIndex = tasks.indexOf(draggedItem);
+        const toIndex = tasks.indexOf(this);
+        toDos.insertBefore(draggedItem, fromIndex < toIndex ? this.nextSibling : this);
+    }
+    return false;
+}
+toDos.addEventListener("dragend", handleDragEnd, false)
+
+function handleDragEnd(e){
+    e.target.style.opacity = "1";
+}
