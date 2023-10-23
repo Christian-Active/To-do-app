@@ -94,6 +94,19 @@ let clearFilter = document.querySelector(".clear-filter")
 let allTodos = document.querySelector("#to-do-remain");
 let clearAllTodos = document.querySelector("#to-do-clear");
 
+// Array for storing all todos
+let array = [];
+if (!localStorage.getItem("todos")) {
+    array = [];
+} else {
+    array = JSON.parse(localStorage.getItem("todos"))
+}
+// function to get latest array data
+let getArray = (array) => {
+    let arrayList = JSON.stringify(array)
+    localStorage.setItem("todos", arrayList)
+}
+
 // Template to create a new todo
 let createTemplate = (todo) => {
     let html = `<li class=" item add-to-do to-do-box to-do-cont" draggable="true">
@@ -102,6 +115,11 @@ let createTemplate = (todo) => {
         <img class = "delete" src="./images/icon-cross.svg">
     </li>`
     toDos.innerHTML += html;
+
+    // adding the new todo to the array
+    array.push(html)
+    getArray(array)
+
     toDos.querySelectorAll("li").forEach(todo => {
         todo.addEventListener("dragstart", handleDragStart, false)
     })
@@ -183,8 +201,14 @@ clearAllTodos.addEventListener("click", () => {
     if (confirm("Are you sure you want to clear all completed todos") == true){
         let childArray = Array.from(toDos.children);
         childArray.forEach(child => {
-            if(child.classList.contains("to-do-checked")){child.remove()}
+            let childArray = Array.from(toDos.children);
+            if(child.classList.contains("to-do-checked")){
+                child.remove();
+                let childIndex = childArray.indexOf(child)
+                array.splice(childIndex, 1)
+            }
         })
+        getArray(array);
         todoCount("completed");
         form.reset();
     }
@@ -230,7 +254,6 @@ filter.addEventListener("click", e => {
 let draggedElement = null;
 
 function handleDragStart(e){
-    console.log("Something was dragged")
     e.dataTransfer.effectAllowed = "move"
     e.dataTransfer.setData("text/plain", e.target.innerHTML)
     draggedItem = e.target;
@@ -256,4 +279,16 @@ toDos.addEventListener("dragend", handleDragEnd, false)
 
 function handleDragEnd(e){
     e.target.style.opacity = "1";
+}
+
+// Local Storage area
+// localStorage.clear();
+if (localStorage.getItem("todos")) {
+    let parse = JSON.parse(localStorage.getItem("todos"))
+    for(let i = 0; i < parse.length; i++) {
+        toDos.innerHTML += parse[i]
+    }
+    console.log(parse)
+    clearFilter.style.display = "grid"
+    todoCount();
 }
