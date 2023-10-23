@@ -181,8 +181,12 @@ form.toDoInput.addEventListener("drop", e => e.preventDefault());
 
 // delete a todo
 toDos.addEventListener("click", e => {
+    let parent = e.target.parentElement
+    let childIndex = Array.from(toDos.children).indexOf(parent)
     if (e.target.className == "delete"){
         e.target.parentElement.remove();
+        array.splice(childIndex, 1)
+        getArray(array)
     }
     todoCount();
 })
