@@ -194,6 +194,39 @@ clearAllTodos.addEventListener("click", () => {
 // Filtering Todos
 
 // function that filters todo
+let filterTodo = (id) => {
+    if (id == "active"){
+        Array.from(toDos.children)
+            .filter((todo) => todo.classList.contains("to-do-checked"))
+            .forEach(todo => todo.classList.add("to-do-filtered"))
+        Array.from(toDos.children)
+            .filter((todo) => !todo.classList.contains("to-do-checked"))
+            .forEach(todo => todo.classList.remove("to-do-filtered"))
+    }
+    if (id == "completed"){
+        Array.from(toDos.children)
+            .filter((todo) => !todo.classList.contains("to-do-checked"))
+            .forEach(todo => todo.classList.add("to-do-filtered"))
+         Array.from(toDos.children)
+            .filter((todo) => todo.classList.contains("to-do-checked"))
+            .forEach(todo => todo.classList.remove("to-do-filtered"))
+    }
+    if (id == "all"){
+        Array.from(toDos.children)
+            .filter((todo) => todo.classList.contains("add-to-do"))
+            .forEach(todo => todo.classList.remove("to-do-filtered"))
+    }
+}
+
+// Event listener to filter todo
+let filter = document.querySelector(".to-do-filter");
+filter.addEventListener("click", e => {
+    filterTodo(e.target.id);
+    removeNoTodo()
+    todoCount(e.target.id);
+})
+
+// Drag and dropping
 let draggedElement = null;
 
 function handleDragStart(e){
