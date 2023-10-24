@@ -88,6 +88,7 @@ body{
     border: 1px solid var(--light-gray-blue);
     cursor: pointer;
     outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
 .to-do-box .to-do-circle{
     width: 24px;
@@ -105,7 +106,7 @@ body{
     font-size: 13;
     outline: none;
     width: 100%;
-    background-color: transparent;
+    background: transparent;
     color: var(--very-dark-gray-blue);
 }
 .to-do-text{
@@ -144,7 +145,7 @@ body{
 }
 .to-do-checked .to-do-text{
     text-decoration: line-through;
-    color: var(--dark-gray-blue);
+    opacity: 0.6;
 }
 #emptyTodo{
     border-radius: 7px 7px 0px 0px;

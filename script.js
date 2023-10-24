@@ -43,7 +43,8 @@ let setTodos = (mode, id) => {
     let toDoContainer = fullTodo.querySelectorAll(".to-do-cont")
     let toDoBox = fullTodo.querySelectorAll(".to-do-box")
     let circles = fullTodo.querySelectorAll(".circle")
-    let toDoText = fullTodo.querySelectorAll(".to-do-input");
+    let toDoInput = fullTodo.querySelector(".to-do-input");
+    let toDoText = fullTodo.querySelectorAll(".to-do-text");
 
     toDoContainer.forEach((cont) => {
         cont.style.backgroundColor = mode[id].toDoContainer
@@ -57,6 +58,7 @@ let setTodos = (mode, id) => {
     toDoText.forEach((text) => {
         text.style.color = mode[id].toDoText
     })
+    toDoInput.style.color = mode[id].toDoText
 }
 
 // Event Listener to change themes
